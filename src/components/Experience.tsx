@@ -1,17 +1,18 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-function Contact() {
+function Experience() {
   return (
     <Box sx={{ padding: 2 }}>
       <Typography variant="h3" align="center" gutterBottom>
-        Contact
+        Experience
       </Typography>
       <Typography variant="body1" align="center">
-        Feel free to get in touch with me via email or LinkedIn. 
+        I have worked in various roles in software development, focusing on frontend and backend technologies.
       </Typography>
     </Box>
   );
 }
 
-export default Contact;
+export default Experience;
+

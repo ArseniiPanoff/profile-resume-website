@@ -1,17 +1,18 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-function Contact() {
+function Skills() {
   return (
     <Box sx={{ padding: 2 }}>
       <Typography variant="h3" align="center" gutterBottom>
-        Contact
+        Skills
       </Typography>
       <Typography variant="body1" align="center">
-        Feel free to get in touch with me via email or LinkedIn. 
+        My skill set includes React, TypeScript, JavaScript, HTML, CSS, and various other web development tools and frameworks.
       </Typography>
     </Box>
   );
 }
 
-export default Contact;
+export default Skills;
+
