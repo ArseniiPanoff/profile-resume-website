@@ -1,84 +1,54 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { AppBar, Toolbar, Button, Container, Grid } from '@mui/material';
-import { Link as ScrollLink, Element } from 'react-scroll';
-import About from './components/About';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Home from './components/Home';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
+import { Box, Container, CssBaseline,ThemeProvider } from '@mui/material';
+import Navbar from './components/Navbar';
+import Layout from './components/Layout';
+import BackToTopButton from './components/BackToTopButton';
+import Home from './components/Sections/Home'; 
+import About from './components/Sections/About';  
+import Projects from './components/Sections/Projects';  
+import Experience from './components/Sections/Experience';  
+import Skills from './components/Sections/Skills';  
+import Contact from './components/Sections/Contact';  
+import theme from './theme';
 
-const APP_BAR_HEIGHT = 64; // Adjust this based on your AppBar height
-
-function App() {
+const App: React.FC = () => {
   return (
-    <Router>
-      <div className="App">
-        <AppBar position="sticky">
-          <Toolbar>
-            <Container maxWidth="lg">
-              <Grid container justifyContent="center" alignItems="center" spacing={2}>
-                <Grid item>
-                  <ScrollLink to="home" smooth={true} duration={500} offset={-APP_BAR_HEIGHT}>
-                    <Button color="inherit">Home</Button>
-                  </ScrollLink>
-                </Grid>
-                <Grid item>
-                  <ScrollLink to="about" smooth={true} duration={500} offset={-APP_BAR_HEIGHT}>
-                    <Button color="inherit">About</Button>
-                  </ScrollLink>
-                </Grid>
-                <Grid item>
-                  <ScrollLink to="projects" smooth={true} duration={500} offset={-APP_BAR_HEIGHT}>
-                    <Button color="inherit">Projects</Button>
-                  </ScrollLink>
-                </Grid>
-                <Grid item>
-                  <ScrollLink to="experience" smooth={true} duration={500} offset={-APP_BAR_HEIGHT}>
-                    <Button color="inherit">Experience</Button>
-                  </ScrollLink>
-                </Grid>
-                <Grid item>
-                  <ScrollLink to="skills" smooth={true} duration={500} offset={-APP_BAR_HEIGHT}>
-                    <Button color="inherit">Skills</Button>
-                  </ScrollLink>
-                </Grid>
-                <Grid item>
-                  <ScrollLink to="contact" smooth={true} duration={500} offset={-APP_BAR_HEIGHT}>
-                    <Button color="inherit">Contact</Button>
-                  </ScrollLink>
-                </Grid>
-              </Grid>
-            </Container>
-          </Toolbar>
-        </AppBar>
-        <Container maxWidth="lg" style={{ marginTop: '2em' }}>
-          <Element name="home">
-            <Home />
-          </Element>
-          <Element name="about">
-            <About />
-          </Element>
-          <Element name="projects">
-            <Projects />
-          </Element>
-          <Element name="experience">
-            <Experience />
-          </Element>
-          <Element name="skills">
-            <Skills />
-          </Element>
-          <Element name="contact">
-            <Contact />
-          </Element>
-        </Container>
-      </div>
-    </Router>
+    <React.Fragment>
+       <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box
+          sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: -1,
+            backgroundImage: `url(/ikhlas-rahman-qlW7RwHZVG8-unsplash.jpg)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: 0.9, // Adjust opacity to make it slightly visible
+          }}
+        />
+      <Navbar />
+      <Container sx={{ border:"", paddingTop: 8, minWidth:"100%" }}>
+        <Layout >
+          <Home />
+          <About />
+          <Experience />
+          <Skills />
+          <Projects />
+          <Contact />
+        </Layout>
+      </Container>
+      <BackToTopButton />
+      </ThemeProvider>
+    </React.Fragment>
   );
 }
 
 export default App;
+
 
 
 
