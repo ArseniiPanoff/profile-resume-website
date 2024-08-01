@@ -1,5 +1,13 @@
 import React, { ReactNode } from 'react';
-import { Accordion, AccordionSummary, AccordionDetails, ListItemIcon, ListItemText, ListItem, Typography } from '@mui/material';
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  ListItemIcon,
+  ListItemText,
+  ListItem,
+  Typography,
+} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 interface ExperienceItemProps {
@@ -9,7 +17,12 @@ interface ExperienceItemProps {
   children?: ReactNode; // Placeholder for additional content
 }
 
-const ExperienceItem: React.FC<ExperienceItemProps> = ({ icon, title, description, children }) => (
+const ExperienceItem: React.FC<ExperienceItemProps> = ({
+  icon,
+  title,
+  description,
+  children,
+}) => (
   <Accordion sx={{ mb: 2 }}>
     <AccordionSummary
       expandIcon={<ExpandMoreIcon />}
@@ -22,20 +35,12 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ icon, title, descriptio
           primaryTypographyProps={{ variant: 'h6' }}
           secondaryTypographyProps={{ variant: 'body1' }}
           primary={title}
-          secondary={
-            
-              <Typography>
-              {description}
-              </Typography>
-          }
+          secondary={<Typography>{description}</Typography>}
         />
       </ListItem>
     </AccordionSummary>
-    <AccordionDetails>
-      {children}
-    </AccordionDetails>
+    <AccordionDetails>{children}</AccordionDetails>
   </Accordion>
 );
 
 export default ExperienceItem;
-

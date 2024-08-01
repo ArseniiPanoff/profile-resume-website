@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Box, List, ListItem, ListItemText } from '@mui/material';
+import { List, ListItem, ListItemText } from '@mui/material';
 import Section from './Section';
 
 function Projects() {
@@ -48,4 +48,3 @@ function Projects() {
 }
 
 export default Projects;
-

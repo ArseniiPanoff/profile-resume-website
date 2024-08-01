@@ -7,7 +7,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <Box sx={{border:"", flexGrow: 1 }}>
+    <Box sx={{ border: '', flexGrow: 1 }}>
       <Grid container spacing={2} justifyContent="center">
         <Grid item md={9}>
           {children}
@@ -15,6 +15,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </Grid>
     </Box>
   );
-}
+};
 
 export default Layout;

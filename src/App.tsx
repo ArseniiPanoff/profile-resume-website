@@ -1,22 +1,22 @@
 import React from 'react';
-import { Box, Container, CssBaseline,ThemeProvider } from '@mui/material';
+import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
 import Navbar from './components/Navbar';
 import Layout from './components/Layout';
 import BackToTopButton from './components/BackToTopButton';
-import Home from './components/Sections/Home'; 
-import About from './components/Sections/About';  
-import Projects from './components/Sections/Projects';  
-import Experience from './components/Sections/Experience';  
-import Skills from './components/Sections/Skills';  
-import Contact from './components/Sections/Contact';  
+import Home from './components/Sections/Home';
+import About from './components/Sections/About';
+import Projects from './components/Sections/Projects';
+import Experience from './components/Sections/Experience';
+import Skills from './components/Sections/Skills';
+import Contact from './components/Sections/Contact';
 import theme from './theme';
 
 const App: React.FC = () => {
   return (
     <React.Fragment>
-       <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Box
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box
           sx={{
             position: 'fixed',
             top: 0,
@@ -30,31 +30,21 @@ const App: React.FC = () => {
             opacity: 0.9, // Adjust opacity to make it slightly visible
           }}
         />
-      <Navbar />
-      <Container sx={{ border:"", paddingTop: 8, minWidth:"100%" }}>
-        <Layout >
-          <Home />
-          <About />
-          <Experience />
-          <Skills />
-          <Projects />
-          <Contact />
-        </Layout>
-      </Container>
-      <BackToTopButton />
+        <Navbar />
+        <Container sx={{ border: '', paddingTop: 8, minWidth: '100%' }}>
+          <Layout>
+            <Home />
+            <About />
+            <Experience />
+            <Skills />
+            <Projects />
+            <Contact />
+          </Layout>
+        </Container>
+        <BackToTopButton />
       </ThemeProvider>
     </React.Fragment>
   );
-}
+};
 
 export default App;
-
-
-
-
-
-
-
-
-
-

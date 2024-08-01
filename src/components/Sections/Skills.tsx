@@ -4,25 +4,37 @@ import Section from './Section';
 
 function Skills() {
   return (
-    <Section id="skills" title="Skills">   
+    <Section id="skills" title="Skills">
       <Typography variant="h5" gutterBottom>
         **Programming Languages:**
       </Typography>
       <List>
         <ListItem>
-          <ListItemText primary="TypeScript" secondary="Mainly for web development" />
+          <ListItemText
+            primary="TypeScript"
+            secondary="Mainly for web development"
+          />
         </ListItem>
         <ListItem>
-          <ListItemText primary="Python" secondary="For services development, such as Discord bots and small AI projects" />
+          <ListItemText
+            primary="Python"
+            secondary="For services development, such as Discord bots and small AI projects"
+          />
         </ListItem>
         <ListItem>
-          <ListItemText primary="C#" secondary="For both web and game development" />
+          <ListItemText
+            primary="C#"
+            secondary="For both web and game development"
+          />
         </ListItem>
         <ListItem>
-          <ListItemText primary="Kotlin" secondary="For Spring Boot RESTful applications or mobile development" />
+          <ListItemText
+            primary="Kotlin"
+            secondary="For Spring Boot RESTful applications or mobile development"
+          />
         </ListItem>
       </List>
-      
+
       <Typography variant="h5" gutterBottom>
         **Frameworks, Tools, and Environments:**
       </Typography>
@@ -52,13 +64,22 @@ function Skills() {
       </Typography>
       <List>
         <ListItem>
-          <ListItemText primary="Emotional Composure" secondary="Maintains a calm and collected presence, facilitating clear decision-making and effective problem-solving in challenging situations." />
+          <ListItemText
+            primary="Emotional Composure"
+            secondary="Maintains a calm and collected presence, facilitating clear decision-making and effective problem-solving in challenging situations."
+          />
         </ListItem>
         <ListItem>
-          <ListItemText primary="Critical Thinking" secondary="Adept at questioning assumptions, spotting and correcting errors, enhancing problem-solving abilities." />
+          <ListItemText
+            primary="Critical Thinking"
+            secondary="Adept at questioning assumptions, spotting and correcting errors, enhancing problem-solving abilities."
+          />
         </ListItem>
         <ListItem>
-          <ListItemText primary="Adaptability" secondary="Proven ability to adapt swiftly to evolving work environments and diverse projects." />
+          <ListItemText
+            primary="Adaptability"
+            secondary="Proven ability to adapt swiftly to evolving work environments and diverse projects."
+          />
         </ListItem>
       </List>
     </Section>
@@ -66,5 +87,3 @@ function Skills() {
 }
 
 export default Skills;
-
-

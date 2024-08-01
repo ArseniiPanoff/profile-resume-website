@@ -38,6 +38,6 @@ const BackToTopButton: React.FC = () => {
       </Button>
     </Box>
   );
-}
+};
 
 export default BackToTopButton;
