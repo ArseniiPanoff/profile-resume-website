@@ -4,11 +4,12 @@ export interface Project {
   description: string;
   tasksCompleted?: string[];
   contacts?: { name: string; link: string }[];
-  pdf?: string;
+  pdf?: { buttonDesc: string; pdfLink: string }[];
   projectLink?: string;
+  image?: string;
 }
 
-export const jobs: Project[] = [
+export const projects: Project[] = [
   {
     id: 1,
     title: 'AI for Starcraft II',
@@ -22,6 +23,12 @@ export const jobs: Project[] = [
       'Development of a machine learning pipeline for the given problem',
       'Testing of kernel-k-means on two setups with different base-features',
     ],
-    pdf: '/testimonials/Project_Evaluation_Arsenii_Panov.pdf',
+    image: '/SC2_Image.png',
+    pdf: [
+      {
+        buttonDesc: 'Project Evaluation',
+        pdfLink: '/testimonials/Project_Evaluation_Arsenii_Panov.pdf',
+      },
+    ],
   },
 ];
