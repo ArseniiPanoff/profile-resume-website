@@ -7,7 +7,7 @@ import ImageTextSection from './ImageTextSection';
 function Home() {
   return (
     <Section id="home" title="">
-      <div style={{ paddingTop: '5%' }}>
+      <div style={{ paddingTop: '70px' }}>
         <ImageTextSection
           imageSrc="/arsenii.jpg"
           title="Hello, I'm Arsenii!"

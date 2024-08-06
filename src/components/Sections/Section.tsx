@@ -7,27 +7,28 @@ interface SectionProps {
   children: React.ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({ id, title, children }) => (
-  <Box
-    id={id}
-    sx={{
-      border: '',
-      width: '100%',
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'top',
-      padding: 2,
-      boxSizing: 'border-box', // Ensures padding and border are included in the element's total width and height
-      margin: 0,
-    }}
-  >
-    <Typography sx={{ textAlign: 'center' }} variant="h2" gutterBottom>
-      {title}
-    </Typography>
-    {children}
-  </Box>
-);
+const Section: React.FC<SectionProps> = ({ id, title, children }) => {
+  return (
+    <Box
+      id={id}
+      sx={{
+        width: '100%',
+        minHeight: 'calc(100vh - 70px)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        padding: 2,
+        boxSizing: 'border-box',
+        margin: 0,
+      }}
+    >
+      <Typography sx={{ textAlign: 'center' }} variant="h2" gutterBottom>
+        {title}
+      </Typography>
+      {children}
+    </Box>
+  );
+};
 
 export default Section;

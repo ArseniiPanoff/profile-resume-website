@@ -1,7 +1,7 @@
 // src/components/JobDetails.tsx
 import React from 'react';
 import { Box, Link, List, ListItem, Typography } from '@mui/material';
-import PDFLink from '../../PDFLink';
+import PDFLink from '../PDFLink';
 
 interface JobDetailsProps {
   tasks: string[];

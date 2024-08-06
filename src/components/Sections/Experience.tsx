@@ -4,7 +4,7 @@ import { List } from '@mui/material';
 import Section from './Section';
 import { jobs } from '../../data/jobs';
 import ExperienceItem from './ExperienceItem';
-import JobDetails from './Jobs/JobDetails';
+import JobDetails from './JobDetails';
 
 const Experience: React.FC = () => {
   return (

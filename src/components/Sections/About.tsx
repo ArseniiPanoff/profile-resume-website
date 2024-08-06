@@ -18,7 +18,7 @@ function About() {
       <div>
         <ImageTextSection
           imageSrc="/XAMK.jpg"
-          title="Education"
+          title=""
           text="I hold a Bachelor's Degree in Information Technology from South-Eastern Finland University of Applied Sciences,
          where I graduated with a GPA of 4.08. My educational background,
         combined with hands-on experience, 
