@@ -3,7 +3,6 @@ import { Box, TextField, Button, CircularProgress, Alert } from '@mui/material';
 
 interface FormState {
   name: string;
-  email: string;
   company: string;
   position: string;
   message: string;
@@ -11,7 +10,6 @@ interface FormState {
 
 interface FormErrors {
   name?: string;
-  email?: string;
   message?: string;
 }
 
@@ -28,17 +26,9 @@ const useForm = (initialState: FormState) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const validateEmail = (email: string): boolean => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
-
   const validate = (): FormErrors => {
     const newErrors: FormErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    else if (!validateEmail(formData.email))
-      newErrors.email = 'Invalid email address';
     if (!formData.message.trim()) newErrors.message = 'Message is required';
     return newErrors;
   };
@@ -51,15 +41,35 @@ const useForm = (initialState: FormState) => {
       setIsSubmitting(true);
       setIsSuccess(false);
       try {
-        await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate form submission
-        setIsSuccess(true);
-        setFormData(initialState);
+        const response = await fetch('http://localhost:8080/api/email/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            subject: formatSubject(formData),
+            text: formData.message,
+          }),
+        });
+
+        if (response.ok) {
+          setIsSuccess(true);
+          setFormData(initialState);
+        } else {
+          alert('Failed to send message.');
+        }
       } catch (error) {
-        console.error('Form submission error:', error); // Handle form submission error
+        console.error('Form submission error:', error);
+        alert('An error occurred while sending the message.');
       } finally {
         setIsSubmitting(false);
       }
     }
+  };
+
+  const formatSubject = (data: FormState): string => {
+    const { name, company, position } = data;
+    return `Message from ${name} - ${position ? position : 'Position not specified'} at ${company ? company : 'Company not specified'}`;
   };
 
   return {
@@ -80,7 +90,7 @@ const ContactForm: React.FC = () => {
     isSuccess,
     handleChange,
     handleSubmit,
-  } = useForm({ name: '', email: '', company: '', position: '', message: '' });
+  } = useForm({ name: '', company: '', position: '', message: '' });
 
   return (
     <Box mt={4} width="100%" maxWidth={600}>
@@ -97,20 +107,6 @@ const ContactForm: React.FC = () => {
           helperText={errors.name}
           aria-label="Name"
           aria-describedby="name-helper-text"
-        />
-        <TextField
-          fullWidth
-          label="Email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          type="email"
-          margin="normal"
-          required
-          error={!!errors.email}
-          helperText={errors.email}
-          aria-label="Email"
-          aria-describedby="email-helper-text"
         />
         <TextField
           fullWidth
