@@ -13,15 +13,13 @@ const Section = ({ id, title, children }: SectionProps) => (
     <Box
       sx={{
         width: '100%',
-        minHeight: 'calc(100vh - 120px)',
+        minHeight: 'calc(100vh - 70px)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
         padding: 2,
         boxSizing: 'border-box',
-        marginTop: '70px', // Space for fixed navbar
-        marginBottom: '50px',
       }}
     >
       <Typography sx={{ textAlign: 'center' }} variant="h2" gutterBottom>
