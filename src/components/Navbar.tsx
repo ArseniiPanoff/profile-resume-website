@@ -1,28 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar, Button } from '@mui/material';
-import { Events, Link as ScrollLink, scrollSpy } from 'react-scroll';
+import { Link as ScrollLink, scrollSpy } from 'react-scroll';
 
 const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
-    // Registering the 'begin' event and logging it to the console when triggered.
-    Events.scrollEvent.register('begin', (to, element) => {
-      console.log('begin', to, element);
-    });
+    // Register 'scroll' event listener
+    /*const handleScroll = () => {
+      // You can add custom scroll logic here if needed
+    };*/
 
-    // Registering the 'end' event and logging it to the console when triggered.
-    Events.scrollEvent.register('end', (to, element) => {
-      console.log('end', to, element);
-    });
-
-    // Updating scrollSpy when the component mounts.
+    // Update scrollSpy to make sure it works
     scrollSpy.update();
 
-    // Returning a cleanup function to remove the registered events when the component unmounts.
     return () => {
-      Events.scrollEvent.remove('begin');
-      Events.scrollEvent.remove('end');
+      // Cleanup if necessary
     };
   }, []);
 
@@ -37,10 +30,10 @@ const Navbar: React.FC = () => {
               key={section}
               to={section}
               smooth={true}
-              duration={500}
-              onSetActive={() => setActiveSection(section)}
+              duration={800}
               offset={-70}
               spy={true}
+              onSetActive={() => setActiveSection(section)}
             >
               <Button
                 sx={{
