@@ -3,13 +3,13 @@ import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
 import Navbar from './components/Navbar';
 import Layout from './components/Layout';
 import BackToTopButton from './components/BackToTopButton';
-import Home from './components/Sections/Home';
-import About from './components/Sections/About';
-import Projects from './components/Sections/Projects';
-import Experience from './components/Sections/Experience';
-import Skills from './components/Sections/Skills';
-import Contact from './components/Sections/Contact';
+import Home from './components/Sections/Home/Home';
+import About from './components/Sections/About/About';
+import Experience from './components/Sections/Experience/Experience';
+import Skills from './components/Sections/Skills/Skills';
+import Contact from './components/Sections/Contact/Contact';
 import theme from './theme';
+import Projects from './components/Sections/Projects/Projects';
 
 const App: React.FC = () => {
   return (

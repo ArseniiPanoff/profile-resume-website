@@ -1,6 +1,6 @@
 import React from 'react';
-import Section from './Section';
-import ImageTextSection from './ImageTextSection';
+import Section from '../Section';
+import ImageTextSection from '../ImageTextSection';
 
 function About() {
   return (

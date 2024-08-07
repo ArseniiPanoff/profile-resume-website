@@ -1,8 +1,8 @@
 // src/components/Sections/Skills.tsx
 import React from 'react';
 import { Box, List, ListItem, ListItemText, Typography } from '@mui/material';
-import Section from './Section';
-import { SkillLevel, skills } from '../../data/skills';
+import Section from '../Section';
+import { SkillLevel, skills } from '../../../data/skills';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 

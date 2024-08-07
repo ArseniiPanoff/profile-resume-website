@@ -1,10 +1,10 @@
 // src/components/Sections/Experience.tsx
 import React from 'react';
 import { List } from '@mui/material';
-import Section from './Section';
-import { jobs } from '../../data/jobs';
-import ExperienceItem from './ExperienceItem';
+import Section from '../Section';
+import { jobs } from '../../../data/jobs';
 import JobDetails from './JobDetails';
+import ExperienceItem from './ExperienceItem';
 
 const Experience: React.FC = () => {
   return (

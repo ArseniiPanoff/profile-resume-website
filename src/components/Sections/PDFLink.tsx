@@ -1,6 +1,6 @@
 // src/components/PDFLink.tsx
 import React from 'react';
-import { Link } from '@mui/material';
+import { Button } from '@mui/material';
 
 interface PDFLinkProps {
   file: string;
@@ -13,13 +13,13 @@ const PDFLink: React.FC<PDFLinkProps> = ({ file, children }) => {
   };
 
   return (
-    <Link
-      component="button"
+    <Button
       color="primary"
+      variant="contained"
       onClick={() => handlePDFOpen(file)}
     >
       {children}
-    </Link>
+    </Button>
   );
 };
 

@@ -12,7 +12,8 @@ import {
   Link,
   Button,
 } from '@mui/material';
-import { Project } from '../../data/projects';
+import { Project } from '../../../data/projects';
+import PDFLink from '../PDFLink';
 
 interface ProjectCardProps {
   project: Project;
@@ -110,14 +111,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <List>
               {project.pdf.map((pdf, index) => (
                 <ListItem key={index}>
-                  <Button
-                    sx={{ mt: 2 }}
-                    variant="contained"
-                    href={pdf.pdfLink}
-                    target="_blank"
-                  >
-                    {pdf.buttonDesc}
-                  </Button>
+                  <PDFLink file={pdf.pdfLink}>{pdf.buttonDesc}</PDFLink>
                 </ListItem>
               ))}
             </List>

@@ -13,7 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import WorkHistory from '@mui/icons-material/WorkHistory';
 import WorkIcon from '@mui/icons-material/Work';
 import SchoolIcon from '@mui/icons-material/School';
-import { JobType } from '../../data/jobs';
+import { JobType } from '../../../data/jobs';
 
 interface ExperienceItemProps {
   jobType: JobType;

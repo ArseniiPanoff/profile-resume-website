@@ -8,7 +8,7 @@ export interface Job {
   tasks: string[];
   completedProjects?: string[];
   contacts?: { name: string; link: string }[];
-  pdf?: string;
+  pdf?: { buttonDesc: string; pdfLink: string };
   projectLink?: string;
 }
 
@@ -33,7 +33,10 @@ export const jobs: Job[] = [
         link: 'https://www.linkedin.com/in/yuri-nagibovich/',
       },
     ],
-    pdf: '/testimonials/Freelance_Approval.pdf',
+    pdf: {
+      buttonDesc: 'View Approval',
+      pdfLink: '/testimonials/Freelance_Approval.pdf',
+    },
   },
   {
     id: 2,

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import Section from './Section';
 import ProjectCard from './ProjectCard';
-import { projects } from '../../data/projects';
+import Section from '../Section';
+import { projects } from '../../../data/projects';
 
 function Projects() {
   return (

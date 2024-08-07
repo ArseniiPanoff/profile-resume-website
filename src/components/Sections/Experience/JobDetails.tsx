@@ -7,7 +7,7 @@ interface JobDetailsProps {
   tasks: string[];
   completedProjects?: string[];
   contacts?: { name: string; link: string }[];
-  pdf?: string;
+  pdf?: { buttonDesc: string; pdfLink: string };
   projectLink?: string;
 }
 
@@ -57,7 +57,7 @@ const JobDetails: React.FC<JobDetailsProps> = ({
       )}
       {pdf && (
         <>
-          <PDFLink file={pdf}>View Approval</PDFLink>
+          <PDFLink file={pdf.pdfLink}>{pdf.buttonDesc}</PDFLink>
         </>
       )}
     </Typography>
