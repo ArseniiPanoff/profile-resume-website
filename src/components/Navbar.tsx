@@ -6,11 +6,6 @@ const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
-    // Register 'scroll' event listener
-    /*const handleScroll = () => {
-      // You can add custom scroll logic here if needed
-    };*/
-
     // Update scrollSpy to make sure it works
     scrollSpy.update();
 
