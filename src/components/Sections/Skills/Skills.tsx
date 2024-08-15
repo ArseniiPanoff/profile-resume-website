@@ -67,7 +67,11 @@ const Skills: React.FC = () => {
   }
 
   if (error) {
-    return <Alert severity="error">{error}</Alert>;
+    return (
+      <Section id="skills" title="Skills">
+        <Alert severity="error">{error}</Alert>
+      </Section>
+    );
   }
 
   return (
