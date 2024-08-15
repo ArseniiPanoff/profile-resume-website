@@ -1,14 +1,32 @@
-// src/components/Sections/Experience.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { List } from '@mui/material';
 import Section from '../Section';
-import { jobs } from '../../../data/jobs';
 import JobDetails from './JobDetails';
 import ExperienceItem from './ExperienceItem';
+import { JobService } from '../../../services/JobService'; // Adjust the import path as needed
+import { Job } from '../../../data/jobs';
 
 const Experience: React.FC = () => {
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadJobs = async () => {
+      try {
+        const fetchedJobs = await JobService.fetchJobs();
+        setJobs(fetchedJobs);
+      } catch (error) {
+        console.error(error);
+        setError('Failed to fetch jobs');
+      }
+    };
+
+    loadJobs();
+  }, []);
+
   return (
     <Section id="experience" title="Experience">
+      {error && <p>{error}</p>}
       <List>
         {jobs.map((job) => (
           <ExperienceItem

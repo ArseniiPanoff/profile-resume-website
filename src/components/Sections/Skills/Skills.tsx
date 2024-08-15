@@ -1,20 +1,28 @@
-// src/components/Sections/Skills.tsx
-import React from 'react';
-import { Box, List, ListItem, ListItemText, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  CircularProgress,
+  Alert,
+} from '@mui/material';
 import Section from '../Section';
-import { SkillLevel, skills } from '../../../data/skills';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { Skill, SkillCategory } from '../../../data/skills';
+import { SkillCategoryService } from '../../../services/SkillService';
 
-const levelOrder: Record<SkillLevel, number> = {
-  Beginner: 1,
-  Intermediate: 2,
-  Advanced: 3,
-  Professional: 4,
+const levelOrder: Record<Skill['level'], number> = {
+  BEGINNER: 1,
+  INTERMEDIATE: 2,
+  ADVANCED: 3,
+  PROFESSIONAL: 4,
 };
 
-const skillLevelToStars = (level: SkillLevel) => {
-  const levels = { Beginner: 1, Intermediate: 2, Advanced: 3, Professional: 4 };
+const skillLevelToStars = (level: Skill['level']) => {
+  const levels = { BEGINNER: 1, INTERMEDIATE: 2, ADVANCED: 3, PROFESSIONAL: 4 };
   const stars = [];
   for (let i = 1; i <= 4; i++) {
     stars.push(
@@ -33,11 +41,40 @@ const skillLevelToStars = (level: SkillLevel) => {
 };
 
 const Skills: React.FC = () => {
+  const [categories, setCategories] = useState<SkillCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        setLoading(true);
+        const skillCategories =
+          await SkillCategoryService.fetchSkillCategories();
+        setCategories(skillCategories);
+      } catch {
+        setError('Failed to load skills');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSkills();
+  }, []);
+
+  if (loading) {
+    return <CircularProgress />;
+  }
+
+  if (error) {
+    return <Alert severity="error">{error}</Alert>;
+  }
+
   return (
     <Section id="skills" title="Skills">
-      {skills.map((skillCategory, index) => (
+      {categories.map((skillCategory) => (
         <Box
-          key={index}
+          key={skillCategory.id}
           mb={4}
           sx={{
             borderRadius: 2,
@@ -51,14 +88,14 @@ const Skills: React.FC = () => {
             gutterBottom
             sx={{ mb: 2, textAlign: 'center' }}
           >
-            {skillCategory.category}
+            {skillCategory.categoryName}
           </Typography>
           <List sx={{ padding: 0 }}>
             {skillCategory.items
               .sort((a, b) => levelOrder[b.level] - levelOrder[a.level])
-              .map((skill, idx) => (
+              .map((skill) => (
                 <ListItem
-                  key={idx}
+                  key={skill.id}
                   sx={{
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -77,7 +114,7 @@ const Skills: React.FC = () => {
                       primary={skill.name}
                       secondary={
                         <Typography variant="body2" noWrap>
-                          {skill.description}
+                          {skill.description || 'No description available'}
                         </Typography>
                       }
                       primaryTypographyProps={{ sx: { textAlign: 'left' } }}

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, CircularProgress, Alert } from '@mui/material';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL + '/api/email/send';
+
 interface FormState {
   name: string;
   company: string;
@@ -41,7 +43,7 @@ const useForm = (initialState: FormState) => {
       setIsSubmitting(true);
       setIsSuccess(false);
       try {
-        const response = await fetch('http://localhost:8080/api/email/send', {
+        const response = await fetch(API_BASE_URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

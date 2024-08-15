@@ -19,11 +19,19 @@ interface ProjectCardProps {
   project: Project;
 }
 
+// Helper function to convert the object to an array
+const convertContactsToArray = (contactsObj?: { [key: string]: string }) => {
+  return contactsObj
+    ? Object.entries(contactsObj).map(([name, link]) => ({ name, link }))
+    : [];
+};
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const contactsArray = convertContactsToArray(project.contacts);
 
   return (
     <>
@@ -95,11 +103,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               </List>
             </>
           )}
-          {project.contacts && (
+          {project.contacts && contactsArray.length !== 0 && (
             <>
               <Typography sx={{ mt: 2 }}>Contacts:</Typography>
               <List>
-                {project.contacts.map((contact, index) => (
+                {contactsArray.map((contact, index) => (
                   <ListItem key={index}>
                     <Link href={contact.link}>{contact.name}</Link>
                   </ListItem>
@@ -109,11 +117,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           )}
           {project.pdf && (
             <List>
-              {project.pdf.map((pdf, index) => (
-                <ListItem key={index}>
-                  <PDFLink file={pdf.pdfLink}>{pdf.buttonDesc}</PDFLink>
-                </ListItem>
-              ))}
+              <ListItem>
+                <PDFLink file={JSON.parse(project.pdf).pdfLink}>
+                  {JSON.parse(project.pdf).buttonDesc}
+                </PDFLink>
+              </ListItem>
             </List>
           )}
           {project.projectLink && (
