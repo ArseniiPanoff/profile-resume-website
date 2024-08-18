@@ -35,8 +35,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
   return (
     <>
-      <Card onClick={handleOpen}>
-        <CardActionArea>
+      <Card
+        onClick={handleOpen}
+        sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+      >
+        <CardActionArea
+          sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+        >
           {project.image && (
             <CardMedia
               component="img"
@@ -45,11 +50,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               image={project.image}
             />
           )}
-          <CardContent>
+          <CardContent
+            sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+          >
             <Typography gutterBottom variant="h5" component="div">
               {project.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{
+                flexGrow: 1,
+                maxHeight: '80px', // Limit the height
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: 3, // Limit to 3 lines
+                WebkitBoxOrient: 'vertical',
+              }}
+            >
               {project.description}
             </Typography>
           </CardContent>
