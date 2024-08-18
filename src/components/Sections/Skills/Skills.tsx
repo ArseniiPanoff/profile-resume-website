@@ -117,9 +117,11 @@ const Skills: React.FC = () => {
                     <ListItemText
                       primary={skill.name}
                       secondary={
-                        <Typography variant="body2" noWrap>
-                          {skill.description || 'No description available'}
-                        </Typography>
+                        skill.description ? (
+                          <Typography variant="body2" noWrap>
+                            {skill.description || 'No description available'}
+                          </Typography>
+                        ) : null
                       }
                       primaryTypographyProps={{ sx: { textAlign: 'left' } }}
                       secondaryTypographyProps={{ sx: { textAlign: 'left' } }}
